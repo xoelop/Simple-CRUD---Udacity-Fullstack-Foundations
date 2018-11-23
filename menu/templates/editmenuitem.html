@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Edit Menu Item</h1>
+
+    <form class="" action="{{url_for('editMenuItem', restaurant_id=restaurant_id, menu_id=item.id)}}"
+     method="post">
+
+    <p>Name:
+    <input type="text" name="name" value="", size=30, placeholder="{{item.name}}"><br>
+    Description:
+    <input type="text" name="description" value="", size=80, placeholder="{{item.description}}"><br>
+    Price:
+    <input type="text" name="price" value="", size=30, placeholder="{{item.price}}"><br>
+    Course:
+    <select class="" name="course">
+      {% for course in ['Appetizer', 'Entree', 'Dessert', 'Beverage'] %}
+        <option value={{ course }} {{ 'selected=selected' if course == item.course else '' }}>
+          {{ course }}
+        </option>
+      {% endfor %}
+
+    <br>
+    <input type="submit" name="" value="Edit">
+    <a href="{{url_for('restaurantMenu', restaurant_id=restaurant_id)}}">Cancel</a></p>
+
+
+    </form>
+
+  </body>
+</html>
